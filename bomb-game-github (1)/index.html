@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة القنبلة والمقاعد</title>
+    <style>
+        body {
+            background-image: url('custom_background_resized.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .seats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .seat {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .seat:hover {
+            transform: scale(1.1);
+        }
+        .bomb {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+        .name-input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #008CBA;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f75;
+        }
+        .kick-button {
+            background-color: red;
+        }
+        .kick-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>لعبة القنبلة والمقاعد 💣🪑</h1>
+        <input type="text" id="playerName" placeholder="أدخل اسمك" class="name-input">
+        <button onclick="joinGame()">انضمام</button>
+        <p id="status">انتظر اللاعبين الآخرين...</p>
+        <div id="seats" class="seats"></div>
+        <button id="passBomb" class="hidden" onclick="choosePlayer()">تمرير القنبلة</button>
+        <button id="kickPlayer" class="hidden kick-button" onclick="choosePlayerToKick()">إقصاء لاعب</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
